@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Random;
 
 public class Algoritmid {
@@ -14,6 +15,28 @@ public class Algoritmid {
                 }
             }
         }
+    }
+
+    public static void QuickSort (ArrayList<Integer> list){
+        int pivot = rand.nextInt(list.size());
+        for (int i = 0; i < list.size(); i++) {
+            for (int j = list.size()-1; j > 0; j--) {
+                if (list.get(i) > pivot && list.get(j) < pivot){
+                    Collections.swap(list,i,j);
+                }
+            }
+        }
+    }
+
+    private int partition(ArrayList<Integer> list, int algus, int lõpp){
+        int pivot = list.get(rand.nextInt(lõpp-algus+1)+algus);
+
+        for (int i = algus; i < lõpp+1; i++) {
+            if(list.get(i) <= pivot){
+
+            }
+        }
+        return 0;
     }
 
     public static ArrayList<Integer> createArray(int n){ // meetod tagastab n-liikmelise ArrayListi arvudest vahemikus [0,100]
