@@ -8,7 +8,8 @@ public class Main {
         int[] arvud = {5,4,9,11,100,120,0,2,4,7};
 
         ArrayList<Integer> arvud2 = Algoritmid.createArray(10);
-        ArrayList<Integer> arvud3 = Algoritmid.createArray(2);
+        ArrayList<Integer> arvud3 = Algoritmid.createArray(10);
+        ArrayList<Integer> arvud4 = Algoritmid.createArray(10);
 
 
         System.out.println(arvud2);
@@ -21,8 +22,11 @@ public class Main {
 
         Algoritmid.InsertionSort(arvud3);
 
-        System.out.println(arvud3);
+        System.out.println(arvud3 + "\n");
 
+        System.out.println(arvud4);
+        Algoritmid.QuickSort(arvud4,0,arvud4.size()-1);
+        System.out.println(arvud4);
 
     }
 }
