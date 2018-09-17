@@ -1,32 +1,34 @@
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
-import java.util.Random;
 
 public class Main {
-    public static void main(String[] args) {
-        int[] arvud = {5,4,9,11,100,120,0,2,4,7};
+    public static void main(String[] args) throws IOException{
 
-        ArrayList<Integer> arvud2 = Algoritmid.createArray(10);
-        ArrayList<Integer> arvud3 = Algoritmid.createArray(10);
-        ArrayList<Integer> arvud4 = Algoritmid.createArray(10);
+        BufferedWriter writer = new BufferedWriter(new FileWriter("tulemused.xls"));
+        StringBuilder sb = new StringBuilder();
 
+        for (int i = 0; i <= 15000; i = i+100){
+            ArrayList<Integer> arvud1 = Algoritmid.createArray(i);
+            ArrayList<Integer> arvud2 = Algoritmid.createArray(i);
+            ArrayList<Integer> arvud3 = Algoritmid.createArray(i);
 
-        System.out.println(arvud2);
+            long start1 = System.currentTimeMillis();
+            Algoritmid.InsertionSort(arvud1);
+            long stop1 = System.currentTimeMillis();
 
-        Collections.sort(arvud2);
+            long start2 = System.currentTimeMillis();
+            Algoritmid.QuickSort(arvud2,0,arvud2.size()-1);
+            long stop2 = System.currentTimeMillis();
 
-        System.out.println(arvud2 + "\n");
+            long start3 = System.currentTimeMillis();
+            Collections.sort(arvud3);
+            long stop3 = System.currentTimeMillis();
 
-        System.out.println(arvud3);
-
-        Algoritmid.InsertionSort(arvud3);
-
-        System.out.println(arvud3 + "\n");
-
-        System.out.println(arvud4);
-        Algoritmid.QuickSort(arvud4,0,arvud4.size()-1);
-        System.out.println(arvud4);
-
+            writer.write(i + "\t" + (stop1-start1) + "\t" + (stop2-start2) + "\t" + (stop3-start3) + "\n");
+        }
+        writer.close();
     }
 }

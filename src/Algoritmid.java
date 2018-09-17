@@ -19,43 +19,24 @@ public class Algoritmid {
 
     public static void QuickSort (ArrayList<Integer> list, int algus, int lõpp){
         if (algus < lõpp){
-            int indeks = partition2(list, algus, lõpp);
-            System.out.println(list);
+            int indeks = partition(list, algus, lõpp);
             QuickSort(list, algus, indeks-1);
             QuickSort(list, indeks+1, lõpp);
         }
     }
 
-    private static int partition(ArrayList<Integer> list, int algus, int lõpp){
+    public static int partition(ArrayList<Integer> list, int algus, int lõpp){
         int pivot = list.get(lõpp);
         int j = (algus-1);
         for (int i = algus; i < lõpp; i++) {
             if(list.get(i) <= pivot){
                 j++;
-
                 Collections.swap(list,i,j);
             }
         }
-
         Collections.swap(list,j+1,lõpp);
         return j+1;
     }
-
-    private static int partition2(ArrayList<Integer> list, int algus, int lõpp){
-        int pivot = list.get(lõpp);
-
-        for (int i = algus; i < lõpp+1; i++) {
-            if(list.get(i) >= pivot){
-                list.add(list.get(i));
-                list.remove(i);
-                i--;
-                lõpp--;
-            }
-        }
-
-        return list.indexOf(pivot)-1;
-    }
-
 
     public static ArrayList<Integer> createArray(int n){ // meetod tagastab n-liikmelise ArrayListi arvudest vahemikus [0,100]
         ArrayList<Integer> uus = new ArrayList<>();
